@@ -1,0 +1,4 @@
+haversine==2.5.1
+pymongo==3.11.4
+tabulate==0.8.9
+bson==0.5.10
