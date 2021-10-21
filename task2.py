@@ -13,14 +13,12 @@ class Question:
         self.client = self.connection.client
         self.db = self.connection.db
 
-    # Complete
     def one(self):
         for collection in ["users", "activities", "trackpoints"]:
             print("{collection} has {count} documents".format(
                 collection=collection,
                 count=self.db[collection].count_documents(filter={})))
 
-    # Complete
     def two(self):
         for result in self.db["activities"].aggregate([
             {
@@ -49,7 +47,6 @@ class Question:
             print(f"Min: {result['minActivities']}")
             print(f"Max: {result['maxActivities']}")
 
-    # Complete
     def three(self):
         print("List of top 10 user with the most activities")
         for user in self.db["users"].aggregate([
@@ -74,7 +71,6 @@ class Question:
         ]):
             print(f"User: {user['_id']} Activities: {user['activities_count']}")
 
-    # Complete
     def four(self):
         for result in self.db["activities"].aggregate([
             {
@@ -104,7 +100,6 @@ class Question:
         ]):
             print(f"Number of users that have started an activity one day and ended it the next: {result['users']}")
 
-    # Complete
     def five(self):
         for result in self.db["activities"].aggregate([
             {
@@ -130,7 +125,6 @@ class Question:
         ], allowDiskUse=True):
             print(result)
 
-    # Complete
     def six(self):
         for result in self.db["trackpoints"].aggregate([
             {
@@ -181,7 +175,6 @@ class Question:
         ]):
             print(f"User close in time and space: {result['user']['user_id']}")
 
-    # Complete
     def seven(self):
         users = ['135', '132', '104', '103', '168', '157', '150', '159', '166', '161', '102', '105', '133', '134',
                  '160', '158',
@@ -218,7 +211,6 @@ class Question:
 
         print(users)
 
-    # Complete
     def eight(self):
         for transportation in self.db["activities"].aggregate([
             {
@@ -238,7 +230,6 @@ class Question:
         ]):
             print(f"{transportation['_id']} {transportation['distinct_users']} distinct users")
 
-    # Complete
     def nine(self):
         # Task a
         for result in self.db["activities"].aggregate([
@@ -312,7 +303,6 @@ class Question:
                 f"User {result['_id']} has a total of {result['activities']} with a total duration of "
                 f"{result['total_duration'] / 60} hours recorded in november of 2008")
 
-    # Complete
     def ten(self):
         result = self.db["activities"].aggregate([
             {
@@ -356,7 +346,6 @@ class Question:
 
         print(round(distance, 2), "kilometres")
 
-    # Complete
     def eleven(self):
         usersWithAltitudeGained = {}
 
@@ -413,7 +402,6 @@ class Question:
         sortedResult = sorted(usersWithAltitudeGained.items(), key=lambda x: x[1], reverse=True)
         print(tabulate(sortedResult[0:20], headers=('User ID', 'Altitude gained (m)')))
 
-    # Complete
     def twelve(self):
         invalidActivities = {}
 
@@ -490,7 +478,7 @@ def main():
     # question.four()
     # question.five()
     # question.six()
-    question.seven()
+    # question.seven()
     # question.eight()
     # question.nine()
     # question.ten()
