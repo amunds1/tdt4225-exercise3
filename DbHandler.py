@@ -1,11 +1,13 @@
 import os
-import bson
 from pprint import pprint
+
+import bson
 import time
+from dateutil import parser
+
 from utils.DbConnector import DbConnector
 from utils.utils import convertToCorrectDateFormat, split_activity
-from datetime import datetime
-from dateutil import parser
+
 
 class DatabaseHandler:
     def __init__(self):
@@ -49,6 +51,7 @@ class DatabaseHandler:
     """
     INSERT DATA METHODS
     """
+
     def index_users(self):
         # Using insert_many() 0.0286 sec
         # Using insert_one() 0.1003 sec

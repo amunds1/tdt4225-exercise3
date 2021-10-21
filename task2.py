@@ -3,7 +3,6 @@ from datetime import timezone, datetime
 from haversine import haversine
 from tabulate import tabulate
 
-from DbHandler import DatabaseHandler
 from utils.DbConnector import DbConnector
 
 
@@ -406,7 +405,8 @@ class Question:
         invalidActivities = {}
 
         for userIDQuery in range(0, 183):
-            print(f"Now on user {userIDQuery}")
+            formattedUserID = str(userIDQuery).zfill(3)
+            print(f"Now on user {formattedUserID}")
 
             queryResult = self.db["activities"].aggregate([
                 {
@@ -422,7 +422,7 @@ class Question:
                     }
                 }, {
                     '$match': {
-                        'user.user_id': f'{str(userIDQuery).zfill(3)}'
+                        'user.user_id': f'{formattedUserID}'
                     }
                 }, {
                     '$lookup': {
